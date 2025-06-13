@@ -403,9 +403,9 @@ main{
 
   .logo-container.zoomed {
     font-size: 300px; /* 최종 확대 크기 */
-    color: #fff; /* 텍스트 색상 변경 */
+    color: #000000; /* 텍스트 색상 변경 */
     background-color: #000; /* 배경색 변경 */
-    transition: all 0s ease; /* 부드러운 전환 */
+    transition: all 0.5s ease; /* 부드러운 전환 */
   }
   
   .section-banner-img2{
