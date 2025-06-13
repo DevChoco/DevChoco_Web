@@ -155,12 +155,12 @@
     
       // 휠 이벤트 처리
       document.addEventListener("wheel", function (e) {
-        if (zoom < 80) {
+        if (zoom < 70) {
           if (e.deltaY > 0) {
             zoom += ZOOM_SPEED;
             nameSection.style.transform = `scale(${zoom})`;
           }
-        } else if (zoom >= 80) {
+        } else if (zoom >= 70) {
           nameSection.classList.add("zoomed");
         }
       });
@@ -176,12 +176,12 @@
       document.addEventListener("touchmove", function (e) {
         touchEndY = e.touches[0].clientY;
     
-        if (zoom < 40) {
+        if (zoom < 80) {
           if (touchStartY > touchEndY) {
             zoom += ZOOM_SPEED;
             nameSection.style.transform = `scale(${zoom})`;
           }
-        } else if (zoom >= 40) {
+        } else if (zoom >= 80) {
           nameSection.classList.add("zoomed");
         }
       });
