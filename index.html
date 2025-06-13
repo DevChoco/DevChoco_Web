@@ -164,6 +164,9 @@
           nameSection.classList.add("zoomed");
         }
       });
+
+      let zoom_m = 2;
+      const ZOOM_SPEED_m = 4.5;
     
       // 모바일 터치 이벤트 처리
       let touchStartY = 0;
@@ -176,12 +179,12 @@
       document.addEventListener("touchmove", function (e) {
         touchEndY = e.touches[0].clientY;
     
-        if (zoom < 90) {
+        if (zoom_m < 90) {
           if (touchStartY > touchEndY) {
-            zoom += ZOOM_SPEED;
-            nameSection.style.transform = `scale(${zoom})`;
+            zoom_m += ZOOM_SPEED_m;
+            nameSection.style.transform = `scale(${zoom_m})`;
           }
-        } else if (zoom >= 90) {
+        } else if (zoom_m >= 90) {
           nameSection.classList.add("zoomed");
         }
       });
