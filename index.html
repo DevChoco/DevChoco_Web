@@ -150,8 +150,8 @@
     
       const nameSection = document.getElementById("team_name");
     
-      let zoom = 3;
-      const ZOOM_SPEED = 2;
+      let zoom = 4;
+      const ZOOM_SPEED = 3;
     
       // 휠 이벤트 처리
       document.addEventListener("wheel", function (e) {
@@ -176,12 +176,12 @@
       document.addEventListener("touchmove", function (e) {
         touchEndY = e.touches[0].clientY;
     
-        if (zoom < 80) {
+        if (zoom < 90) {
           if (touchStartY > touchEndY) {
             zoom += ZOOM_SPEED;
             nameSection.style.transform = `scale(${zoom})`;
           }
-        } else if (zoom >= 80) {
+        } else if (zoom >= 90) {
           nameSection.classList.add("zoomed");
         }
       });
