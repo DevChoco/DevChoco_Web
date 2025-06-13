@@ -56,7 +56,7 @@
       <div class="team">
         <div class="member" onclick="location.href='https://github.com/Sonny997'">
           <img src="public/img/team/김민수.jpg" alt="김민수">
-          <h3>김민수</h3>
+          <h3>Kim Minsoo | 김민수</h3>
           <ul>
               <li>Team Leader</li>
               <li>Project Manager</li>
@@ -64,7 +64,7 @@
         </div>
         <div class="member" onclick="location.href='https://github.com/kimsehyun-34'">
           <img src="public/img/team/김세현.png" alt="김세현">
-          <h3>Kimsehyun | 김세현</h3>
+          <h3>Kim Sehyun | 김세현</h3>
           <ul>
               <li>Chief Technical Officer</li>
               <li>CV Model Engineer</li>
@@ -73,7 +73,7 @@
         </div>
         <div class="member" onclick="location.href='https://github.com/jiwo-lee'">
           <img src="public/img/team/이지우.jpg" alt="이지우">
-          <h3>이지우</h3>
+          <h3>Lee Jiwoo | 이지우</h3>
           <ul>
               <li>Data Scientist</li>
               <li>Front-end Developer</li>
@@ -82,7 +82,7 @@
         </div>
         <div class="member" onclick="location.href='https://github.com/lee123-jun'">
           <img src="public/img/team/이혜준.jpg" alt="이혜준">
-          <h3>이혜준</h3>
+          <h3>Lee Hyejun | 이혜준</h3>
           <ul>
               <li>DL Model Engineer</li>
               <li>Database Admin</li>
@@ -122,45 +122,67 @@
     
         // IntersectionObserver 설정
         const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("ani_text_bf"); // 애니메이션 클래스 추가
-                    } else {
-                        entry.target.classList.remove("ani_text_bf"); // 애니메이션 클래스 제거
-                    }
-                });
-              },
-              {
-                  threshold: 0.5, // 요소가 50% 보일 때 트리거
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("ani_text_bf"); // 애니메이션 클래스 추가
+              } else {
+                entry.target.classList.remove("ani_text_bf"); // 애니메이션 클래스 제거
               }
-          );
-      
-          abElements.forEach((el) => observer.observe(el));
+            });
+          },
+          {
+            threshold: 0.5, // 요소가 50% 보일 때 트리거
+          }
+        );
+    
+        abElements.forEach((el) => observer.observe(el));
       });
-
-      const body = document.getElementById('body');
-
+    
+      const body = document.getElementById("body");
+    
       window.scroll({
         top: 0,
         left: 100,
-        behavior: 'smooth',
-        wrapperSpeed: 0.065
+        behavior: "smooth",
+        wrapperSpeed: 0.065,
       });
-
-      const nameSection = document.getElementById('team_name');
-
+    
+      const nameSection = document.getElementById("team_name");
+    
       let zoom = 3;
       const ZOOM_SPEED = 2;
-
+    
+      // 휠 이벤트 처리
       document.addEventListener("wheel", function (e) {
+        if (zoom < 80) {
+          if (e.deltaY > 0) {
+            zoom += ZOOM_SPEED;
+            nameSection.style.transform = `scale(${zoom})`;
+          }
+        } else if (zoom >= 80) {
+          nameSection.classList.add("zoomed");
+        }
+      });
+    
+      // 모바일 터치 이벤트 처리
+      let touchStartY = 0;
+      let touchEndY = 0;
+    
+      document.addEventListener("touchstart", function (e) {
+        touchStartY = e.touches[0].clientY;
+      });
+    
+      document.addEventListener("touchmove", function (e) {
+        touchEndY = e.touches[0].clientY;
+    
         if (zoom < 40) {
-            if (e.deltaY > 0) {
-                zoom += ZOOM_SPEED;
-                nameSection.style.transform = `scale(${zoom})`;
-            }
+          if (touchStartY > touchEndY) {
+            zoom += ZOOM_SPEED;
+            nameSection.style.transform = `scale(${zoom})`;
+          }
         } else if (zoom >= 40) {
-            nameSection.classList.add("zoomed");
+          nameSection.classList.add("zoomed");
         }
       });
     </script>
